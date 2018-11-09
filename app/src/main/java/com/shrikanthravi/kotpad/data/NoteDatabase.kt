@@ -88,7 +88,9 @@ class NoteDatabase(context: Context) {
     private fun fromNote(note: Note): ContentValues {
         return ContentValues().apply {
             val noteId = note.id
-            put(_ID, noteId )
+            if (noteId != -1) {
+                put(_ID, noteId )
+            }
             put(TITLE,note.title)
             put(TEXT, note.text)
             put(IS_PINNED, note.isPinned)
